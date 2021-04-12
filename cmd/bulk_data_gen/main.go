@@ -32,7 +32,7 @@ import (
 )
 
 // Output data format choices:
-var formatChoices = []string{"influx-bulk", "es-bulk", "es-bulk6x", "es-bulk7x", "cassandra", "mongo", "opentsdb", "timescaledb-sql", "timescaledb-copyFrom", "graphite-line", "splunk-json"}
+var formatChoices = []string{"influx-bulk", "es-bulk", "es-bulk6x", "es-bulk7x", "cassandra", "mongo", "opentsdb", "timescaledb-sql", "timescaledb-copyFrom", "graphite-line", "splunk-json","tdengine-sql"}
 
 // Program option vars:
 var (
@@ -238,6 +238,8 @@ func main() {
 		serializer = common.NewSerializerGraphiteLine()
 	case "splunk-json":
 		serializer = common.NewSerializerSplunkJson()
+	case "tdengine-sql":
+		serializer = common.NewSerializerTDEngineSql()
 	default:
 		panic("unreachable")
 	}
